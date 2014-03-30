@@ -30,14 +30,14 @@ virtualenv venvs/rostergenius
 source ~/Development/venvs/rostergenius/bin/activate
 ```
 
-Then download the roster genius source code and set it up:
+Then download the roster genius source code and set it up.
+
+1. Download the [GitHub Mac app](http://mac.github.com), create a GitHub account if you don't already have one, and log in.
+2. Click the 'Clone in Desktop' button on the right hand side of this page, and clone it into the Development folder you created earlier.
 
 ```
-# Download roster genius. This may bring up a dialog to install the developer tools. Install them.
-git clone git@github.com:joshhunt/rostergenius.git
-
-# Move into the rostergenius folder
-cd rostergenius
+# Move into the rostergenius folder you created with the GitHub app. FYI, ~ is a shortcut for your home folder
+cd ~/Development/rostergenius
 
 # Install the dependencies required by roster genius
 pip install -r requrements.txt
@@ -52,7 +52,7 @@ Assuming that completed without any errors, every time you want to start roster 
 # Activate the roster genius sandbox
 source ~/Development/venvs/rostergenius/bin/activate
 
-# Move into the roster genius folder and start the server.
+# Move into the rostergenius folder and start the server.
 cd ~/Development/rostergenius
 ./manage.py runserver 0.0.0.0:8000
 ```
