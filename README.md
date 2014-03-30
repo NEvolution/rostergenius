@@ -40,7 +40,7 @@ Then download the roster genius source code and set it up.
 cd ~/Development/rostergenius
 
 # Install the dependencies required by roster genius
-pip install -r requrements.txt
+pip install -r requirements.txt
 
 # Create the roster genius database
 ./manage.py syncdb
