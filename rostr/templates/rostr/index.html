@@ -48,9 +48,8 @@
 				}
 			}
 
-			_IS_CURRENTLY_SUBMITTING = true
+			_IS_CURRENTLY_SUBMITTING = true;
 			$('#submit-button').addClass('loading');
-			ga('send', 'event', 'roster', 'attempt');
 			$.ajax({
 				url: '/parse/',
 				type: 'POST',
@@ -58,32 +57,30 @@
 				success: onSubmissionSuccess,
 				error: onSubmissionError,
 				complete: onSubmissionComplete
-			})
+			});
 			return false;
-		}
+		};
 
 		onSubmissionSuccess = function(data, status, xhr){
 			window.location = "/download/" + data.accesstoken + "/";
-			ga('send', 'event', 'roster', 'success');
 			$('.prompt').addClass('collapse');
 			$('.preamble').removeClass('collapse');
 			$('.prompt--error .msg').html(' ');
-		}
+		};
 
 		onSubmissionError = function(xhr, type) {
-			ga('send', 'event', 'roster', 'error');
 
 			if(xhr.status === 400) {
 				// The parser will return 400 if we detected an error in the input
 				var resp = JSON.parse(xhr.response);
-				var errorHTML = resp.message
+				var errorHTML = resp.message;
 			} else {
 				// Otherwise, errors of other types are unforseen.
-				var errorHTML = '<strong>Eeek.</strong> An unexpected error has occured. There may have been a server error, or a problem interpreting your input.'
+				var errorHTML = '<strong>Eeek.</strong> An unexpected error has occured. There may have been a server error, or a problem interpreting your input.';
 
 				if(xhr.responseText.length > 20) {
 					var pythonException = xhr.responseText.split('\n\n')[0]
-					pythonException = pythonException.replace(/(\r\n|\n|\r)/gm,"")
+					pythonException = pythonException.replace(/(\r\n|\n|\r)/gm,"");
 					errorHTML += ' (Server error: ' + pythonException + ')';
 				}
 			}
@@ -93,8 +90,8 @@
 				$('.prompt').addClass('collapse');
 				$('.prompt--error').removeClass('collapse');
 				$('.preamble').addClass('collapse');
-			}, 100)
-		}
+			}, 100);
+		};
 
 		onSubmissionComplete = function(xhr, status) {
 			$('#submit-button').removeClass('loading');
