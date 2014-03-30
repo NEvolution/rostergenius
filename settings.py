@@ -91,7 +91,11 @@ APPEND_SLASH = True
 
 try:
     from localsettings import *
-    print "Using local settings"
+    print "## Using local development settings"
 except:
     _DEBUG = DEBUG
-    print "Using prod settings"
+    print "## Using production settings"
+    if DEBUG:
+        print "## WARNING! Using production settings, but DEBUG is set to True"
+        print '## If you\'re running this on a publicly accessable server,'
+        print 'it is HIGHLY RECOMMENDED you set this back to False'
